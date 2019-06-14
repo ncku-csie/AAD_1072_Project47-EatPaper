@@ -1,6 +1,5 @@
 package com.yoyohung.eatpaper;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -15,35 +14,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
-
-public class MainActivity extends AppCompatActivity
+public class PaperDetail extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    // ==================
-    private static final String TAG = "MainActivity";
-    private FirebaseFirestore mFirestore;
-    private Query mQuery;
-    // ===================
+    private static final String TAG = "PaperDetailActivity";
+
+    public static final String KEY_PAPER_ID = "key_paper_id";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_paper_detail);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        // initializeFirestore ===
-        initFirestore();
-        // ====================
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // ===========================
-                launchPaperDetailActivity(paper);
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
@@ -55,27 +42,7 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-
-        // Testing firestore display
-
-
     }
-
-    // ======================
-    private void initFirestore() {
-        mFirestore = FirebaseFirestore.getInstance();
-
-        // Get the 50 highest rated restaurants
-        mQuery = mFirestore.collection("paperStock/ylj7N7knsIakLbmiSbA3");
-    }
-    private void launchPaperDetailActivity(DocumentSnapshot paper) {
-        // Go to the details page for the selected paper
-        Intent intent = new Intent(this, PaperDetail.class);
-        intent.putExtra(PaperDetail.KEY_PAPER_ID, paper.getId());
-
-        startActivity(intent);
-    }
-    // ======================
 
     @Override
     public void onBackPressed() {
@@ -90,7 +57,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.paper_detail, menu);
         return true;
     }
 
