@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddPaper">
+    <!-- 標籤-->
+    <TextView
+        android:id="@+id/TV_Type"
+        style="@style/TV_style"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:text="分類"
+        app:layout_constraintBottom_toTopOf="@+id/TV_Label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TV_Quantity"
+        style="@style/TV_style"
+        android:layout_marginTop="30dp"
+        android:text="數量"
+        app:layout_constraintStart_toStartOf="@+id/TV_Size"
+        app:layout_constraintTop_toBottomOf="@+id/TV_Size" />
+
+    <TextView
+        android:id="@+id/TV_Name"
+        style="@style/TV_style"
+        android:layout_marginTop="30dp"
+        android:text="紙名"
+        app:layout_constraintStart_toStartOf="@+id/TV_ID"
+        app:layout_constraintTop_toBottomOf="@+id/TV_ID" />
+
+    <TextView
+        android:id="@+id/TV_Weight"
+        style="@style/TV_style"
+        android:layout_marginTop="30dp"
+        android:text="基重"
+        app:layout_constraintStart_toStartOf="@+id/TV_Name"
+        app:layout_constraintTop_toBottomOf="@+id/TV_Name" />
+
+    <TextView
+        android:id="@+id/TV_Size"
+        style="@style/TV_style"
+        android:layout_marginTop="30dp"
+        android:text="尺寸"
+        app:layout_constraintStart_toStartOf="@+id/TV_Type"
+        app:layout_constraintTop_toBottomOf="@+id/TV_Weight" />
+
+    <TextView
+        android:id="@+id/TV_ID"
+        style="@style/TV_style"
+        android:layout_marginTop="30dp"
+        android:text="編號"
+        app:layout_constraintStart_toStartOf="@+id/TV_Label"
+        app:layout_constraintTop_toBottomOf="@+id/TV_Label" />
+
+    <TextView
+        android:id="@+id/TV_Label"
+        style="@style/TV_style"
+        android:layout_marginTop="30dp"
+        android:text="廠商"
+        app:layout_constraintStart_toStartOf="@+id/TV_Type"
+        app:layout_constraintTop_toBottomOf="@+id/TV_Type" />
+
+    <TextView
+        android:id="@+id/TV_Color"
+        style="@style/TV_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="顏色"
+        app:layout_constraintStart_toStartOf="@+id/TV_Quantity"
+        app:layout_constraintTop_toBottomOf="@+id/TV_Quantity" />
+    <!-- -->
+
+    <!--輸入項-->
+    <!-- 分類-->
+    <Spinner
+        android:id="@+id/Sp_PaperType"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginRight="80dp"
+        android:entries="@array/PaperType"
+        app:layout_constraintBottom_toBottomOf="@+id/TV_Type"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/TV_Type"
+        app:layout_constraintTop_toTopOf="@+id/TV_Type"
+        app:layout_constraintVertical_bias="1.0" />
+    <!-- 廠商-->
+    <Spinner
+        android:id="@+id/Sp_PaperLabel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginRight="80dp"
+        android:entries="@array/PaperLabel"
+        app:layout_constraintBottom_toBottomOf="@+id/TV_Label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/TV_Label"
+        app:layout_constraintTop_toTopOf="@+id/TV_Label"
+        app:layout_constraintVertical_bias="1.0" />
+    <!-- 編號-->
+    <EditText
+        android:id="@+id/ET_ID"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:isScrollContainer="false"
+        app:layout_constraintBottom_toBottomOf="@+id/TV_ID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/TV_ID"
+        app:layout_constraintTop_toTopOf="@+id/TV_ID" />
+    <!-- 紙品-->
+    <EditText
+        android:id="@+id/ET_PaperName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toBottomOf="@+id/TV_Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/TV_Name"
+        app:layout_constraintTop_toTopOf="@+id/TV_Name" />
+    <!-- 基重-->
+    <EditText
+        android:id="@+id/ET_PaperWeight"
+        android:layout_width="279dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBaseline_toBaselineOf="@+id/TV_Weight"
+        app:layout_constraintStart_toEndOf="@+id/TV_Weight" />
+    <!-- 尺寸-->
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/ET_PaperQuantity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/TV_Size"
+        app:layout_constraintTop_toBottomOf="@+id/ET_PaperWeight">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/ET_PaperSize"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="207X470 或 A4" />
+    </android.support.design.widget.TextInputLayout>
+    <!-- 數量-->
+    <EditText
+        android:id="@+id/ET_PaperQuantity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@+id/TV_Quantity"
+        app:layout_constraintEnd_toStartOf="@+id/Sp_PaperUnit"
+        app:layout_constraintStart_toEndOf="@+id/TV_Quantity"
+        app:layout_constraintTop_toTopOf="@+id/TV_Quantity" />
+    <!-- 單位-->
+    <Spinner
+        android:id="@+id/Sp_PaperUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
+        android:entries="@array/PaperUnit"
+        app:layout_constraintBottom_toBottomOf="@+id/ET_PaperQuantity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ET_PaperQuantity"
+        app:layout_constraintTop_toTopOf="@+id/ET_PaperQuantity" />
+    <!-- 顏色-->
+    <ImageView
+        android:id="@+id/Ima_PaperColor"
+        android:layout_width="150dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/TV_Color"
+        app:layout_constraintStart_toEndOf="@+id/TV_Color"
+        app:layout_constraintTop_toTopOf="@+id/TV_Color"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/btn_Save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
+        android:onClick="OnSave"
+        android:text="儲存"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TV_Color" />
+
+    <TextView
+        android:id="@+id/TV_Remark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/colorAccent"
+        android:textSize="14dp"
+        app:layout_constraintStart_toStartOf="@+id/TV_Color"
+        app:layout_constraintTop_toBottomOf="@+id/TV_Color" />
+
+</android.support.constraint.ConstraintLayout>

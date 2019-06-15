@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.util.Log;
+//import android.util.Log;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity
     private FirebaseFirestore mFirestore;
     private DocumentReference mPaperRef;
     private TextView mTextView_Content;
-    private String documentID = "UXtfo7wsYIYjCBuo9fgr";
+    private String documentID = "Y70C5rN4LQeG1qSD94Dq";
     private DocumentSnapshot paper;
     // ===================
 
@@ -86,12 +86,12 @@ public class MainActivity extends AppCompatActivity
                     if (paper.exists()) {
                         Paper paper = MainActivity.this.paper.toObject(Paper.class);
                         mTextView_Content.setText(paper.getPaperName() + paper.getCurrentQuantity() + paper.getUnit());
-                        Log.d(TAG, "DocumentSnapshot data: " + MainActivity.this.paper.getData());
+//                        Log.d(TAG, "DocumentSnapshot data: " + MainActivity.this.paper.getData());
                     } else {
-                        Log.d(TAG, "No such doc");
+//                        Log.d(TAG, "No such doc");
                     }
                 } else {
-                    Log.d(TAG, "get failed with ", task.getException());
+//                    Log.d(TAG, "get failed with ", task.getException());
                 }
             }
         });
@@ -147,6 +147,8 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_home) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
+            Intent AddPaper= new Intent(this,AddPaper.class);
+            startActivity(AddPaper);
 
         } else if (id == R.id.nav_slideshow) {
 

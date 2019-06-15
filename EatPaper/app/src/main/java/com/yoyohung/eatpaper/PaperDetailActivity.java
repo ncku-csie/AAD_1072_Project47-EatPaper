@@ -2,7 +2,7 @@ package com.yoyohung.eatpaper;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
+//import android.util.Log;
 import android.view.View;
 import android.view.MenuItem;
 
@@ -43,7 +43,6 @@ public class PaperDetailActivity extends AppCompatActivity
     private TextView mCurrentQuantity;
     private TextView mUnit;
     private View mUpper;
-    private View mLower;
     private Button mInStock;
     private Button mOutStock;
     private ListView mListView;
@@ -73,7 +72,6 @@ public class PaperDetailActivity extends AppCompatActivity
         mCurrentQuantity = (TextView) findViewById(R.id.textView_currentQuantity_paper_detail);
         mUnit = (TextView) findViewById(R.id.textView_unit_paper_detail);
         mUpper = (View) findViewById(R.id.view_color_upper);
-        mLower = (View) findViewById(R.id.view_color_lower);
         mInStock = (Button) findViewById(R.id.button_inStock);
         mOutStock = (Button) findViewById(R.id.button_outStock);
         mListView = (ListView) findViewById(R.id.listView_history);
@@ -122,11 +120,11 @@ public class PaperDetailActivity extends AppCompatActivity
     @Override
     public void onEvent(DocumentSnapshot snapshot, FirebaseFirestoreException e) {
         if (e != null) {
-            Log.w(TAG, "paper:onEvent", e);
+//            Log.w(TAG, "paper:onEvent", e);
             return;
         }
 //        Paper paper = snapshot.toObject(Paper.class);
-        Log.d(TAG, "DocumentSnapshot data: " + snapshot.getData());
+//        Log.d(TAG, "DocumentSnapshot data: " + snapshot.getData());
         onPaperLoaded(snapshot.toObject(Paper.class));
     }
 
@@ -134,19 +132,13 @@ public class PaperDetailActivity extends AppCompatActivity
         String IDLabel = paper.getSupplyCompany() + " " + paper.getPaperID();
         mIDLabel.setText(IDLabel);
         mPaperName.setText(paper.getPaperName());
+//        Log.d(TAG, "paper.getPaperName(): " + String.valueOf(paper.getCurrentQuantity()));
         mSize.setText(paper.getPaperSize());
         mWeight.setText(String.valueOf(paper.getPaperWeight()));
         mCurrentQuantity.setText(String.valueOf(paper.getCurrentQuantity()));
         mUnit.setText(paper.getUnit());
         mUpper.setBackgroundColor(Color.parseColor(paper.getPaperColor()));
-        mLower.setBackgroundColor(Color.parseColor(paper.getPaperColor()));
 
-//        Collections.sort(paper.getHistory(), new Comparator<Map<String, Object>>() {
-//            @Override
-//            public int compare(Map<String, Object> h1, Map<String, Object> h2) {
-//                return h1.get("quantity").compareTo(h2.get("quantity"));
-//            }
-//        });
         List history = paper.getHistory();
         Collections.sort(history, new Comparator<Map<String, Object>> () {
             public int compare(Map<String, Object> m1, Map<String, Object> m2) {
@@ -156,16 +148,6 @@ public class PaperDetailActivity extends AppCompatActivity
         });
         HistoryAdapter adapter = new HistoryAdapter(this, history);
         mListView.setAdapter(adapter);
-//        Map<String, Object> update = (Map<String, Object>) paper.getHistory().get(0);
-//        Timestamp stamp = (Timestamp) update.get("updateTime");
-//        Date date = stamp.toDate();
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-//        String dts = sdf.format(date);
-//        Log.d(TAG, dts);
-//        Log.d(TAG, (String) update.get("action"));
-//        Log.d(TAG, String.valueOf(update.get("quantity")));
-//        mInStock.setText();
-//        mOutStock.setText();
 
     }
 }

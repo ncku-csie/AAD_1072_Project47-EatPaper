@@ -12,6 +12,7 @@
         android:layout_width="413dp"
         android:layout_height="80dp"
         android:background="#E8EAF6"
+        android:elevation="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -22,6 +23,7 @@
         android:layout_width="0dp"
         android:layout_height="215dp"
         android:background="#E8EAF6"
+        android:elevation="6dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,6 +37,7 @@
         android:layout_marginTop="32dp"
         android:text="商鉅 Q-302"
         android:textSize="18sp"
+        android:elevation="6dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,6 +51,7 @@
         android:text="羊皮-金黃"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="36sp"
+        android:elevation="6dp"
         app:layout_constraintStart_toStartOf="@+id/view_paper_detail_upper"
         app:layout_constraintTop_toBottomOf="@+id/textView_idLabel_paper_detail" />
 
@@ -63,6 +67,7 @@
         android:text="589"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="48sp"
+        android:elevation="6dp"
         app:layout_constraintBottom_toBottomOf="@+id/view_paper_detail_upper"
         app:layout_constraintEnd_toStartOf="@+id/textView_unit_paper_detail"
         app:layout_constraintTop_toBottomOf="@+id/textView_nameLabel_paper_detail" />
@@ -76,6 +81,7 @@
         android:layout_marginBottom="8dp"
         android:text="張"
         android:textSize="24sp"
+        android:elevation="6dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView_currentQuantity_paper_detail"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -89,6 +95,7 @@
         android:layout_marginBottom="32dp"
         android:text="297X470"
         android:textSize="18sp"
+        android:elevation="6dp"
         app:layout_constraintBottom_toBottomOf="@+id/view_paper_detail_upper"
         app:layout_constraintStart_toEndOf="@+id/textView_size_label_paper_detail"
         app:layout_constraintTop_toBottomOf="@+id/textView_weight_paper_detail" />
@@ -103,6 +110,7 @@
         android:layout_marginBottom="32dp"
         android:text="@string/size"
         android:textSize="18sp"
+        android:elevation="6dp"
         app:layout_constraintBottom_toBottomOf="@+id/view_paper_detail_upper"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_weight_paper_detail" />
@@ -116,6 +124,7 @@
         android:layout_marginTop="16dp"
         android:text="70"
         android:textSize="18sp"
+        android:elevation="6dp"
         app:layout_constraintStart_toEndOf="@+id/textView_weight_label_paper_detail"
         app:layout_constraintTop_toBottomOf="@+id/textView_nameLabel_paper_detail" />
 
@@ -128,28 +137,21 @@
         android:layout_marginTop="16dp"
         android:text="@string/weight"
         android:textSize="18sp"
+        android:elevation="6dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_nameLabel_paper_detail" />
 
     <View
         android:id="@+id/view_color_upper"
         android:layout_width="0dp"
-        android:layout_height="20dp"
+        android:layout_height="0dp"
         android:background="#FBC02D"
+        app:layout_constraintBottom_toTopOf="@+id/view_paper_detail_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view_paper_detail_upper" />
 
-    <View
-        android:id="@+id/view_color_lower"
-        android:layout_width="0dp"
-        android:layout_height="20dp"
-        android:background="#FBC02D"
-        app:layout_constraintBottom_toTopOf="@+id/view_paper_detail_bottom"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
     <Button
         android:id="@+id/button_inStock"
         style="@style/Widget.AppCompat.Button"
@@ -161,6 +163,7 @@
         android:drawableLeft="@drawable/ic_add_circle"
         android:text="@string/inStock"
         android:textSize="20sp"
+        android:elevation="24dp"
         app:layout_constraintBottom_toBottomOf="@+id/view_paper_detail_bottom"
         app:layout_constraintStart_toStartOf="@+id/view_paper_detail_bottom" />
 
@@ -175,6 +178,7 @@
         android:drawableLeft="@drawable/ic_remove_circle_black_24dp"
         android:text="@string/outStock"
         android:textSize="20sp"
+        android:elevation="24dp"
         app:layout_constraintBottom_toBottomOf="@+id/view_paper_detail_bottom"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -184,13 +188,15 @@
         android:layout_height="0dp"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/view_color_lower"
+        android:layout_marginBottom="24dp"
+        android:background="#FDFDFD"
+        android:elevation="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/view_paper_detail_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view_color_upper" />
+        app:layout_constraintTop_toBottomOf="@+id/view_paper_detail_upper" />
 
 </android.support.constraint.ConstraintLayout>
