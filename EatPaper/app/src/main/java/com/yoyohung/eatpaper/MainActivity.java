@@ -31,9 +31,9 @@ public class MainActivity extends AppCompatActivity
     private static final String TAG = "MainActivity";
     private FirebaseFirestore mFirestore;
     private DocumentReference mPaperRef;
-    TextView mTextView_Content;
-    private String documentID = "ylj7N7knsIakLbmiSbA3";
-    DocumentSnapshot paper;
+    private TextView mTextView_Content;
+    private String documentID = "UXtfo7wsYIYjCBuo9fgr";
+    private DocumentSnapshot paper;
     // ===================
 
     @Override
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity
     public void onPaperSelected(DocumentSnapshot paper) {
         // Go to the details page for the selected paper
         Intent intent = new Intent(this, PaperDetailActivity.class);
-//        intent.putExtra(PaperDetailActivity.KEY_PAPER_ID, paper.getId());
+        intent.putExtra(PaperDetailActivity.KEY_PAPER_ID, paper.getId());
 
         startActivity(intent);
     }

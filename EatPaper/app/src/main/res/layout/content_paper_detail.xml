@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".PaperDetailActivity"
-    tools:showIn="@layout/app_bar_paper_detail">
+    tools:context=".PaperDetailActivity">
 
     <View
         android:id="@+id/view_paper_detail_bottom"
@@ -178,5 +177,20 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/view_paper_detail_bottom"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <ListView
+        android:id="@+id/listView_history"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/view_color_lower"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_color_upper" />
 
 </android.support.constraint.ConstraintLayout>

@@ -18,4 +18,31 @@
     <string name="inStock">入庫</string>
     <string name="weight">基重</string>
     <string name="size">尺寸</string>
+
+    <string name="title_Add_paper">新增紙品</string>
+    <string-array name="PaperType">
+        <item>封面紙</item>
+        <item>色紙</item>
+        <item>影印紙</item>
+        <item>貼紙</item>
+        <item>封面紙</item>
+        <item>上光模</item>
+        <item>大圖捲紙</item>
+    </string-array>
+    <string-array name="PaperLabel">
+        <item>商鉅</item>
+        <item>松逸</item>
+        <item>杏昌</item>
+        <item>皓晟</item>
+        <item>台中鑄字</item>
+        <item>海宏杜</item>
+        <item>奕郝</item>
+        <item>益盛</item>
+    </string-array>
+    <string-array name="PaperUnit">
+        <item>張</item>
+        <item>包</item>
+        <item>箱</item>
+        <item>捲</item>
+    </string-array>
 </resources>
