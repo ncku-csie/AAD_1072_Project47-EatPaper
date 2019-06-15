@@ -14,4 +14,8 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="title_activity_paper_detail">紙張詳情</string>
+    <string name="outStock">出庫</string>
+    <string name="inStock">入庫</string>
+    <string name="weight">基重</string>
+    <string name="size">尺寸</string>
 </resources>

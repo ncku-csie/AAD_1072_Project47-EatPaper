@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -14,10 +15,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
+import com.yoyohung.eatpaper.model.Paper;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -25,7 +30,10 @@ public class MainActivity extends AppCompatActivity
     // ==================
     private static final String TAG = "MainActivity";
     private FirebaseFirestore mFirestore;
-    private Query mQuery;
+    private DocumentReference mPaperRef;
+    TextView mTextView_Content;
+    private String documentID = "ylj7N7knsIakLbmiSbA3";
+    DocumentSnapshot paper;
     // ===================
 
     @Override
@@ -34,7 +42,8 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        // ===
+        mTextView_Content = (TextView) findViewById(R.id.textView_Content);
         // initializeFirestore ===
         initFirestore();
         // ====================
@@ -43,7 +52,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 // ===========================
-                launchPaperDetailActivity(paper);
+                onPaperSelected(paper);
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
@@ -56,7 +65,7 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
-        // Testing firestore display
+
 
 
     }
@@ -65,13 +74,33 @@ public class MainActivity extends AppCompatActivity
     private void initFirestore() {
         mFirestore = FirebaseFirestore.getInstance();
 
-        // Get the 50 highest rated restaurants
-        mQuery = mFirestore.collection("paperStock/ylj7N7knsIakLbmiSbA3");
-    }
-    private void launchPaperDetailActivity(DocumentSnapshot paper) {
+        // Get reference to the paper
+        mPaperRef = mFirestore.collection("paperStock").document(documentID);
+
+
+        mPaperRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    paper = task.getResult();
+                    if (paper.exists()) {
+                        Paper paper = MainActivity.this.paper.toObject(Paper.class);
+                        mTextView_Content.setText(paper.getPaperName() + paper.getCurrentQuantity() + paper.getUnit());
+                        Log.d(TAG, "DocumentSnapshot data: " + MainActivity.this.paper.getData());
+                    } else {
+                        Log.d(TAG, "No such doc");
+                    }
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                }
+            }
+        });
+
+    };
+    public void onPaperSelected(DocumentSnapshot paper) {
         // Go to the details page for the selected paper
-        Intent intent = new Intent(this, PaperDetail.class);
-        intent.putExtra(PaperDetail.KEY_PAPER_ID, paper.getId());
+        Intent intent = new Intent(this, PaperDetailActivity.class);
+//        intent.putExtra(PaperDetailActivity.KEY_PAPER_ID, paper.getId());
 
         startActivity(intent);
     }

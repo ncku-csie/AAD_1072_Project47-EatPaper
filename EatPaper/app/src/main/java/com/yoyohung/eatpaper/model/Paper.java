@@ -1,7 +1,10 @@
 package com.yoyohung.eatpaper.model;
+import android.util.ArrayMap;
+
 import com.google.firebase.firestore.IgnoreExtraProperties;
 
-import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 @IgnoreExtraProperties
 public class Paper {
@@ -25,7 +28,7 @@ public class Paper {
     private String unit;
     private String supplyCompany;
     private int currentQuantity;
-    private Arrays history;
+    private List<Map<String, Object>> history;
 
     public Paper() {}
 
@@ -38,7 +41,7 @@ public class Paper {
             String supplyCompany,
             int paperWeight,
             int currentQuantity,
-            Arrays history) {
+            List<Map<String, Object>> history) {
 
         this.paperID = paperID;
         this.paperType = paperType;
@@ -125,11 +128,11 @@ public class Paper {
         this.currentQuantity = currentQuantity;
     }
 
-    public Arrays getHistory() {
+    public List<Map<String, Object>> getHistory() {
         return history;
     }
 
-    public void setHistory(Arrays history) {
+    public void setHistory(List<Map<String, Object>> history) {
         this.history = history;
     }
 }
