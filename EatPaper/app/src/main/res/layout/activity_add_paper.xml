@@ -117,8 +117,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
@@ -135,8 +135,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
@@ -148,14 +148,20 @@
     <!-- 基重-->
     <EditText
         android:id="@+id/ET_PaperWeight"
-        android:layout_width="279dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
         android:ems="10"
         android:inputType="number"
-        app:layout_constraintBaseline_toBaselineOf="@+id/TV_Weight"
-        app:layout_constraintStart_toEndOf="@+id/TV_Weight" />
+        app:layout_constraintBottom_toBottomOf="@+id/TV_Weight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/TV_Weight"
+        app:layout_constraintTop_toTopOf="@+id/TV_Weight" />
     <!-- 尺寸-->
     <android.support.design.widget.TextInputLayout
         android:layout_width="0dp"
@@ -163,8 +169,8 @@
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/ET_PaperQuantity"
         app:layout_constraintEnd_toEndOf="parent"
@@ -175,7 +181,8 @@
             android:id="@+id/ET_PaperSize"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="207X470 或 A4" />
+            android:hint="207X470 或 A4"
+            android:singleLine="true" />
     </android.support.design.widget.TextInputLayout>
     <!-- 數量-->
     <EditText
@@ -212,6 +219,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:background="#FFFFFF"
+        android:elevation="2dp"
         app:layout_constraintBottom_toBottomOf="@+id/TV_Color"
         app:layout_constraintStart_toEndOf="@+id/TV_Color"
         app:layout_constraintTop_toTopOf="@+id/TV_Color"
@@ -222,8 +230,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginRight="60dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
         android:onClick="OnSave"
         android:text="儲存"
         app:layout_constraintEnd_toEndOf="parent"
