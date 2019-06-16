@@ -61,7 +61,7 @@ public class HistoryAdapter extends BaseAdapter {
         if (action.equals("in")) {
             textView_action.setText("+");
         } else {
-            textView_action.setText("–"); // –
+            textView_action.setText("–");
         }
 
         return view;

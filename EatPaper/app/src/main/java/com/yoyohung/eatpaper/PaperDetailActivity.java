@@ -212,7 +212,7 @@ public class PaperDetailActivity extends AppCompatActivity
         Date CurrentTime = new Date(System.currentTimeMillis());
         Timestamp updateTime = new Timestamp(CurrentTime);
         Map<String,Object> newAction = new HashMap<String,Object>();
-        newAction.put("action","in");
+        newAction.put("action", action);
         newAction.put("index", index);
         newAction.put("quantity", newQuantity);
         newAction.put("updateTime", updateTime);
