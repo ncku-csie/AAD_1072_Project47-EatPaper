@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <View
-        android:id="@+id/view_paper_detail_upper"
+        android:id="@+id/view_paper_list_color"
         android:layout_width="0dp"
         android:layout_height="215dp"
         android:background="#E8EAF6"
@@ -52,7 +52,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="36sp"
         android:elevation="6dp"
-        app:layout_constraintStart_toStartOf="@+id/view_paper_detail_upper"
+        app:layout_constraintStart_toStartOf="@+id/view_paper_list_color"
         app:layout_constraintTop_toBottomOf="@+id/textView_idLabel_paper_detail" />
 
     <TextView
@@ -68,7 +68,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="48sp"
         android:elevation="6dp"
-        app:layout_constraintBottom_toBottomOf="@+id/view_paper_detail_upper"
+        app:layout_constraintBottom_toBottomOf="@+id/view_paper_list_color"
         app:layout_constraintEnd_toStartOf="@+id/textView_unit_paper_detail"
         app:layout_constraintTop_toBottomOf="@+id/textView_nameLabel_paper_detail" />
 
@@ -96,7 +96,7 @@
         android:text="297X470"
         android:textSize="18sp"
         android:elevation="6dp"
-        app:layout_constraintBottom_toBottomOf="@+id/view_paper_detail_upper"
+        app:layout_constraintBottom_toBottomOf="@+id/view_paper_list_color"
         app:layout_constraintStart_toEndOf="@+id/textView_size_label_paper_detail"
         app:layout_constraintTop_toBottomOf="@+id/textView_weight_paper_detail" />
 
@@ -111,7 +111,7 @@
         android:text="@string/size"
         android:textSize="18sp"
         android:elevation="6dp"
-        app:layout_constraintBottom_toBottomOf="@+id/view_paper_detail_upper"
+        app:layout_constraintBottom_toBottomOf="@+id/view_paper_list_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_weight_paper_detail" />
 
@@ -150,7 +150,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view_paper_detail_upper" />
+        app:layout_constraintTop_toBottomOf="@+id/view_paper_list_color" />
 
     <Button
         android:id="@+id/button_inStock"
@@ -197,6 +197,6 @@
         app:layout_constraintBottom_toTopOf="@+id/view_paper_detail_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view_paper_detail_upper" />
+        app:layout_constraintTop_toBottomOf="@+id/view_paper_list_color" />
 
 </android.support.constraint.ConstraintLayout>

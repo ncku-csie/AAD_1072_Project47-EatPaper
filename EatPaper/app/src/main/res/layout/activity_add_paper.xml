@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingLeft="16dp"
     tools:context=".AddPaper">
     <!-- 標籤-->
     <TextView
@@ -242,6 +243,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:paddingLeft="2dp"
         android:textColor="@color/colorAccent"
         android:textSize="14dp"
         app:layout_constraintStart_toStartOf="@+id/TV_Color"

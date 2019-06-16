@@ -20,13 +20,16 @@
     <string name="size">尺寸</string>
 
     <string name="title_Add_paper">新增紙品</string>
+    <string name="new_paper">新增紙品</string>
+    <string name="checkpapercool">檢視紙庫</string>
+    <string name="signOut">登出</string>
     <string-array name="PaperType">
         <item>封面紙</item>
         <item>色紙</item>
         <item>影印紙</item>
         <item>貼紙</item>
         <item>封面紙</item>
-        <item>上光模</item>
+        <item>上光膜</item>
         <item>大圖捲紙</item>
     </string-array>
     <string-array name="PaperLabel">
@@ -44,5 +47,21 @@
         <item>包</item>
         <item>箱</item>
         <item>捲</item>
+    </string-array>
+
+    <string name="paper_name">Paper Name</string>
+    <string name="paper_intro">ID , width*height , weight</string>
+    <string name="num_of_paper">N</string>
+    <string name="slice">張</string>
+    <string name="paper_type_image">paper type image</string>
+    <string name="title_activity_paper_list">PaperList</string>
+    <string name="by">依</string>
+    <string name="order">排序</string>
+
+    <string-array name="filter_list">
+        <item>紙名</item>
+        <item>庫存量</item>
+        <item>顏色</item>
+        <item>紙品種類</item>
     </string-array>
 </resources>

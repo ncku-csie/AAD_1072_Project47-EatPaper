@@ -4,21 +4,16 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 //import android.util.Log;
-import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
-import android.view.MenuItem;
 
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -27,11 +22,9 @@ import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.ListenerRegistration;
-import com.google.firebase.firestore.Transaction;
 import com.yoyohung.eatpaper.adapter.HistoryAdapter;
 import com.yoyohung.eatpaper.model.Paper;
 
-import java.sql.Time;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -65,10 +58,11 @@ public class PaperDetailActivity extends AppCompatActivity
     // TextView mDFAction;
     // EditText mDFDelta;
     // TextView mDFNewQuantity;
-    int currentQuantity;
-    int index;
-    String unit;
-    String action;
+    private int currentQuantity;
+    private int index;
+    private String unit;
+    private String action;
+    private String paperName;
     // --------------------*-
 
     @Override
@@ -136,27 +130,27 @@ public class PaperDetailActivity extends AppCompatActivity
             mPaperRegistration = null;
         }
     }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.paper_detail, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.paper_detail, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
     /**
      * Listener for the Paper document ({@link #mPaperRef}).
@@ -175,12 +169,13 @@ public class PaperDetailActivity extends AppCompatActivity
     private void onPaperLoaded(Paper paper) {
         String IDLabel = paper.getSupplyCompany() + " " + paper.getPaperID();
         mIDLabel.setText(IDLabel);
-        mPaperName.setText(paper.getPaperName());
         // Log.d(TAG, "paper.getPaperName(): " + String.valueOf(paper.getNewQuantity()));
         // *****************
+        paperName = paper.getPaperName();
         currentQuantity = paper.getCurrentQuantity();
         unit = paper.getUnit();
         // *****************
+        mPaperName.setText(paper.getPaperName());
         mSize.setText(paper.getPaperSize());
         mWeight.setText(String.valueOf(paper.getPaperWeight()));
         mCurrentQuantity.setText(String.valueOf(currentQuantity));
@@ -208,17 +203,25 @@ public class PaperDetailActivity extends AppCompatActivity
     @Override
     public void setNewQuantity(final int newQuantity) {
         hideKeyboard();
-        Log.d(TAG, "Get: " + String.valueOf(newQuantity));
-        Date CurrentTime = new Date(System.currentTimeMillis());
-        Timestamp updateTime = new Timestamp(CurrentTime);
-        Map<String,Object> newAction = new HashMap<String,Object>();
-        newAction.put("action", action);
-        newAction.put("index", index);
-        newAction.put("quantity", newQuantity);
-        newAction.put("updateTime", updateTime);
+        if (newQuantity >= 0) {
+            Log.d(TAG, "Get: " + String.valueOf(newQuantity));
+            Date CurrentTime = new Date(System.currentTimeMillis());
+            Timestamp updateTime = new Timestamp(CurrentTime);
+            Map<String,Object> newAction = new HashMap<String,Object>();
+            newAction.put("action", action);
+            newAction.put("index", index);
+            newAction.put("quantity", newQuantity);
+            newAction.put("updateTime", updateTime);
 
-        mPaperRef.update("currentQuantity", newQuantity);
-        mPaperRef.update("history", FieldValue.arrayUnion(newAction));
+            mPaperRef.update("currentQuantity", newQuantity);
+            mPaperRef.update("history", FieldValue.arrayUnion(newAction));
+            Snackbar.make(findViewById(R.id.view_paper_list_color), "成功修改 " + paperName + " 數量", Snackbar.LENGTH_SHORT)
+                    .setAction("Action", null).show();
+        } else {
+            Snackbar.make(findViewById(R.id.view_paper_list_color), "數量不正確，請再確認一次", Snackbar.LENGTH_SHORT)
+                    .setAction("Action", null).show();
+        }
+
     }
 
     private void hideKeyboard() {
