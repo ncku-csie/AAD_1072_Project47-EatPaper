@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "42462594803",
+    "firebase_url": "https://eat-paper-5fceb.firebaseio.com",
+    "project_id": "eat-paper-5fceb",
+    "storage_bucket": "eat-paper-5fceb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:42462594803:android:16b4842e48e3cc15",
+        "android_client_info": {
+          "package_name": "com.yoyohung.eatpaper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "42462594803-5kqk741oplti03f783qanrj7f5147pqq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yoyohung.eatpaper",
+            "certificate_hash": "e0d691ab23b7e302f6b0333a41c38a37405b2290"
+          }
+        },
+        {
+          "client_id": "42462594803-cr39acnsunnhiru0c7b42b9n5nqft1pc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXGvQ9DH7vIHInArhUe6y8yAUhWIxScF4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "42462594803-cr39acnsunnhiru0c7b42b9n5nqft1pc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
