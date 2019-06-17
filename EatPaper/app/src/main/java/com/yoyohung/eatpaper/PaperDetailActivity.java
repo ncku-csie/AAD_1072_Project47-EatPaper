@@ -36,7 +36,7 @@ import static java.lang.Math.abs;
 
 
 public class PaperDetailActivity extends AppCompatActivity
-    // implement listener
+        // implement listener
         implements EventListener<DocumentSnapshot>, PaperActionDialog.PaperActionDialogListener {
     private static final String TAG = "PaperDetailActivity";
     public static final String KEY_PAPER_ID = "key_paper_id";

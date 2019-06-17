@@ -1,6 +1,7 @@
 # EatPaper
 This is the repo for final project of Android App Development Course @NCKU CSIE, Spring, 2019.
 
+[好讀版的 README](https://hackmd.io/@YoYoHung/r1JUyyHyB)
 ## Intro
 這是一個紙品庫存管理的 App，預設的使用者是影印店的員工，能夠將店裡的紙品新增到 Google 的 Cloud FireStore 資料庫，並且能夠隨時檢視紙品清單，並有出庫、入庫的功能，也能檢視數量變動的歷史紀錄。
 ## Prototype
@@ -43,26 +44,55 @@ This is the repo for final project of Android App Development Course @NCKU CSIE,
 <!-- ![](https://i.imgur.com/3au2Ew3.png) -->
 
 ### 0. 登入/註冊
-* **使用Email進行登入的畫面 **
-  1.目前Firebase 的library 支援的最小SdkVersion為16
-    將minSdkVersion 設定16
-  ![](https://imgur.com/oYmeVGI.png)
+- **使用 Email 進行登入的畫面**
+  1. 目前 Firebase 的 library 支援的最小 SdkVersion 為16
+        **將 minSdkVersion 設定16**
+        ![](https://imgur.com/oYmeVGI.png)
   
-  2. 需要再build.gradle(Module)引入的套件包含
+  2. 需要在 `build.gradle(Module : app)` 引入的套件包含了
+        ```java
+        apply plugin: 'com.google.gms.google-services'
+
+        // Firestore
+        implementation 'com.google.firebase:firebase-firestore:19.0.2'
+
+        // Firebase/Play services 
+        implementation 'com.google.firebase:firebase-auth:17.0.0'
+        implementation 'com.google.android.gms:play-services-auth:16.0.1'
+
+        // FirebaseUI (for authentication)
+        implementation 'com.firebaseui:firebase-ui-auth:4.3.2'
+        ```
+  3. 登入程式主要包含: `onStart`、`startSignIn()`
+    
+        1. `onStart`
+        `onStart` 包含了`shouldStartSignIn`在Activity啟動時會去檢查是否已經登入，若尚未登入會呼叫 `startSignIn` 讓使用者進入登入及註冊的畫面。 
+        ![](https://imgur.com/lQgIRWD.png)
+        1. `startSignIn`
+        透過FireBase登入及註冊的Api發出Intent讓使用者以Email登入。
+        ![](https://imgur.com/zWJQMBr.png)
+        
+
+
 
 ### 1. Launch 主畫面
-@至柔
+- **主畫面包含了三個按鈕分別發出Intent 啟動對應的Activity畫面**
+
+    1. 檢視紙庫
+    2. 新增紙品
+    3. 登出
+
 
 ### 2. 新增紙品
 * **使用ColorPicker選擇顏色**
 
-    1.需要在build.gradle(Module：app)引入套件
+    1. 需要在 `build.gradle(Module：app)` 引入套件
 
     `implementation 'com.github.yukuku:ambilwarna:2.0.1'`
         
      ￼![](https://i.imgur.com/cbCQIg2.jpg)
      
-    2.ColorPicker功能設定
+    2. `ColorPicker` 功能設定
     
     ```java=
     //呼叫對話方塊
@@ -131,7 +161,43 @@ This is the repo for final project of Android App Development Course @NCKU CSIE,
 ### 5. 出入庫
 - `PaperActionDialog` : **出/入庫動作訊息框**
         繼承 `DialogFragment` 並實作 `onCreateView()`、`onAttach()`、`onResume()`，在點按 Action Button 之後跳出該對話框，讓使用者輸入該動作的出/入庫的變動量，完成之後對 FireStore 進行 `update`。
+        在 DialogFragment 中定義一個 FragmentListener `Interface` 來讓 `PaperDetailActivity` 實作監聽 Dialog 的功能
+        
+    ```java=
+    // in PaperActionDialog
+    public interface PaperActionDialogListener { 
+       void setNewQuantity(int newQuantity);
+    }
+    ```
+    ```java=
+    // in PaperDetailActivity
+    implements PaperActionDialog.PaperActionDialogListener
+    
+    @Override
+    public void setNewQuantity(final int newQuantity) {
+        hideKeyboard();
+        if (newQuantity >= 0) {
+            Log.d(TAG, "Get: " + String.valueOf(newQuantity));
+            Date CurrentTime = new Date(System.currentTimeMillis());
+            Timestamp updateTime = new Timestamp(CurrentTime);
+            Map<String,Object> newAction = new HashMap<String,Object>();
+            newAction.put("action", action);
+            newAction.put("index", index);
+            newAction.put("quantity", newQuantity);
+            newAction.put("updateTime", updateTime);
+            newAction.put("delta", abs(newQuantity - currentQuantity));
 
+            mPaperRef.update("currentQuantity", newQuantity);
+            mPaperRef.update("history", FieldValue.arrayUnion(newAction));
+            Snackbar.make(findViewById(R.id.view_paper_list_color), "成功修改 " + paperName + " 數量", Snackbar.LENGTH_SHORT)
+                    .setAction("Action", null).show();
+        } else {
+            Snackbar.make(findViewById(R.id.view_paper_list_color), "數量不正確，請再確認一次", Snackbar.LENGTH_SHORT)
+                    .setAction("Action", null).show();
+        }
+
+    }
+    ```
 ## Cloud FireStore Database Structure
 ```
 paperStock {collection}
@@ -154,12 +220,12 @@ paperStock {collection}
 
 ## Contributions
 
-| Student ID | Name    | Contribution |
-| --------  | -------- | -------- |
-| P76071129 | 高至柔    |[登入/註冊](#0-登入註冊)、[Launch 主畫面](#1-Launch-主畫面)|
-| P76071399 | 陳彥儒    |[檢視紙庫](#2-檢視紙庫)|
-| Q56074108 | 盧晏慈    |[新增紙品](#3-新增紙品)|
-| Q56084022 | 洪浩祐    |[紙張詳情/歷史紀錄](#4-紙張詳情歷史紀錄)、[出入庫](#5-出入庫)|
+| Student ID | Name    | Contribution |Percentage|
+| --------  | -------- | -------- | ------- |
+| P76071129 | 高至柔    |[登入/註冊](#0-登入註冊)、[Launch 主畫面](#1-Launch-主畫面)| 25% |
+| P76071399 | 陳彥儒    |[檢視紙庫](#2-檢視紙庫)| 25% |
+| Q56074108 | 盧晏慈    |[新增紙品](#3-新增紙品)| 25% |
+| Q56084022 | 洪浩祐    |[紙張詳情/歷史紀錄](#4-紙張詳情歷史紀錄)、[出入庫](#5-出入庫)| 25% |
 
 ## APK Downloads
 
@@ -167,3 +233,4 @@ paperStock {collection}
 | --------  | -------- | -------- |
 |[**EatPaper.apk**](https://github.com/jayhung97724/EatPaper/blob/master/release/EatPaper.apk?raw=true)|0.0|Beta Test|
 |[**EatPaper-v1.0.apk**](https://github.com/jayhung97724/EatPaper/blob/master/release/EatPaper-v1.0.apk?raw=true)|1.0|Add filter function, change quantity sorting to `ASCENDING`|
+|[**EatPaper-v2.0.apk**](https://github.com/jayhung97724/EatPaper/blob/master/release/EatPaper-v2.0.apk?raw=true)|2.0|change history view to show delta quantity per action|
