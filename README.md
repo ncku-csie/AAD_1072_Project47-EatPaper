@@ -5,7 +5,7 @@ This is the repo for final project of Android App Development Course @NCKU CSIE,
 ## Intro
 這是一個紙品庫存管理的 App，預設的使用者是影印店的員工，能夠將店裡的紙品新增到 Google 的 Cloud FireStore 資料庫，並且能夠隨時檢視紙品清單，並有出庫、入庫的功能，也能檢視數量變動的歷史紀錄。
 ## Prototype
-[Link to prototype](https://github.com/jayhung97724/EatPaper/tree/master/EatPaper%20Prototype)
+[Link to prototype](https://github.com/jayhung97724/EatPaper/blob/master/EatPaper%20Prototype/Prototype.md)
 
 ## App Overview
 
