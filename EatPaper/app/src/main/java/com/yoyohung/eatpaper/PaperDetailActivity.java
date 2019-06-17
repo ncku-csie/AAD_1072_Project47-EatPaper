@@ -32,6 +32,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static java.lang.Math.abs;
+
 
 public class PaperDetailActivity extends AppCompatActivity
     // implement listener
@@ -212,6 +214,7 @@ public class PaperDetailActivity extends AppCompatActivity
             newAction.put("index", index);
             newAction.put("quantity", newQuantity);
             newAction.put("updateTime", updateTime);
+            newAction.put("delta", abs(newQuantity - currentQuantity));
 
             mPaperRef.update("currentQuantity", newQuantity);
             mPaperRef.update("history", FieldValue.arrayUnion(newAction));

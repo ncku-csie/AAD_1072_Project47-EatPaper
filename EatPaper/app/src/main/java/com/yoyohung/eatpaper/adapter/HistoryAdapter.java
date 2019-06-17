@@ -56,7 +56,7 @@ public class HistoryAdapter extends BaseAdapter {
         Log.d("PaperDetailActivity", dts);
 
         textView_timestamp.setText(dts);
-        textView_quantity.setText(update.get("quantity").toString());
+        textView_quantity.setText(update.get("delta").toString());
         String action = (String) update.get("action");
         if (action.equals("in")) {
             textView_action.setText("+");

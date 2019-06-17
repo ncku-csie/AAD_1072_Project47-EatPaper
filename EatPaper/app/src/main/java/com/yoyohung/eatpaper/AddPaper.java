@@ -53,6 +53,7 @@ public class AddPaper extends AppCompatActivity {
     private static final String Index="index";
     private static final String Quantity="quantity";
     private static final String UpdateTime="updateTime";
+    private static final String Delta="delta";
     String[] ItemPaperType;
     String[] ItemPaperLabel;
     String[] ItemPaPerUnit;
@@ -158,6 +159,7 @@ public class AddPaper extends AppCompatActivity {
             npaper.put(Index,0);
             npaper.put(Quantity,Integer.parseInt(PaperQuantity.getText().toString()));
             npaper.put(UpdateTime,updatetime);
+            npaper.put(Delta, Integer.parseInt(PaperQuantity.getText().toString()));
             newhistory.add(npaper);
             Paper newpaper = new Paper(PaperID.getText().toString(),StrPaperType,StrPaperName,
                     PaperSize.getText().toString(),hex_color,StrPaperunit,StrPaperlabel,Integer.parseInt(PaperWeight.getText().toString()),
