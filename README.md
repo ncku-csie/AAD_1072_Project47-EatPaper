@@ -234,3 +234,4 @@ paperStock {collection}
 |[**EatPaper.apk**](https://github.com/jayhung97724/EatPaper/blob/master/release/EatPaper.apk?raw=true)|0.0|Beta Test|
 |[**EatPaper-v1.0.apk**](https://github.com/jayhung97724/EatPaper/blob/master/release/EatPaper-v1.0.apk?raw=true)|1.0|Add filter function, change quantity sorting to `ASCENDING`|
 |[**EatPaper-v2.0.apk**](https://github.com/jayhung97724/EatPaper/blob/master/release/EatPaper-v2.0.apk?raw=true)|2.0|change history view to show delta quantity per action|
+|[**EatPaper-v2.1.apk**](https://github.com/jayhung97724/EatPaper/blob/master/release/EatPaper-v2.1.apk?raw=true)|2.1|bug fix on history view|

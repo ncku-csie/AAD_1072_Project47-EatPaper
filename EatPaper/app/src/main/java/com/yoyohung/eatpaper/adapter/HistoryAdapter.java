@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.google.firebase.Timestamp;
@@ -56,7 +57,11 @@ public class HistoryAdapter extends BaseAdapter {
         Log.d("PaperDetailActivity", dts);
 
         textView_timestamp.setText(dts);
-        textView_quantity.setText(update.get("delta").toString());
+        if (update.get("delta") != null) {
+            textView_quantity.setText(update.get("delta").toString());
+        } else {
+            textView_quantity.setText(update.get("quantity").toString());
+        }
         String action = (String) update.get("action");
         if (action.equals("in")) {
             textView_action.setText("+");
