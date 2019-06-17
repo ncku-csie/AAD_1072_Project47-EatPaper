@@ -57,11 +57,22 @@
     <string name="title_activity_paper_list">PaperList</string>
     <string name="by">依</string>
     <string name="order">排序</string>
+    <string name="filter">篩選</string>
 
-    <string-array name="filter_list">
+    <string-array name="sorter_list">
         <item>紙名</item>
         <item>庫存量</item>
         <item>顏色</item>
         <item>紙品種類</item>
+    </string-array>
+
+    <string-array name="filter_list">
+        <item>所有紙種</item>
+        <item>封面紙</item>
+        <item>色紙</item>
+        <item>影印紙</item>
+        <item>貼紙</item>
+        <item>上光膜</item>
+        <item>大圖捲紙</item>
     </string-array>
 </resources>
