@@ -137,7 +137,7 @@ public class PaperListActivity extends AppCompatActivity implements
                 query = query.orderBy("paperName", Query.Direction.DESCENDING);
                 break;
             case "庫存量":
-                query = query.orderBy("currentQuantity", Query.Direction.DESCENDING);
+                query = query.orderBy("currentQuantity", Query.Direction.ASCENDING);
                 break;
             case "顏色":
                 query = query.orderBy("paperColor", Query.Direction.DESCENDING);
